@@ -7,6 +7,30 @@ namespace BasicStructures
     {
         static void Main(string[] args)
         {
+
+        }
+
+        private static void Reverse2Test()
+        {
+            int[] testArray = {4, 7, 1, 2, 9, 2};
+            var result = ArrayUtils.Reverse2(testArray);
+
+            foreach (var element in result)
+                Console.WriteLine(element);
+
+            Console.WriteLine("----------------");
+
+            foreach (var element in testArray)
+                Console.WriteLine(element);
+        }
+
+        private static void Reverse1Test()
+        {
+            int[] testArray = {4, 7, 1, 2, 9, 2};
+            ArrayUtils.Reverse1(testArray);
+
+            foreach (var element in testArray)
+                Console.WriteLine(element);
         }
 
         private static void Program11b()
