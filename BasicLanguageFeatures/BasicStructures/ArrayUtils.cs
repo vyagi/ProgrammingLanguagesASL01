@@ -1,7 +1,20 @@
-﻿namespace BasicStructures
+﻿using System.Collections.Generic;
+
+namespace BasicStructures
 {
     public static class ArrayUtils
     {
+        public static int[] Round(int[] inputArray, int threshold)
+        {
+            var result = new List<int>();
+
+            foreach (var element in inputArray)
+                if (element >= threshold)
+                    result.Add(element);
+
+            return result.ToArray();
+        }
+
         public static int[] Reverse2(int[] inputArray)
         {
             var result = new int[inputArray.Length];

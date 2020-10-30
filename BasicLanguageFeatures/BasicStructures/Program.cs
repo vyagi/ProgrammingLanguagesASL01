@@ -7,7 +7,11 @@ namespace BasicStructures
     {
         static void Main(string[] args)
         {
+            int[] testArray = { 4, 7, 1, 2, 9, 2 };
+            var result = ArrayUtils.Round(testArray, 4);
 
+            foreach (var element in result)
+                Console.WriteLine(element);
         }
 
         private static void Reverse2Test()
