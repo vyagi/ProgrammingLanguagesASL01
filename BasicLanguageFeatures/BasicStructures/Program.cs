@@ -7,7 +7,51 @@ namespace BasicStructures
     {
         static void Main(string[] args)
         {
-            Program10c();
+        }
+
+        private static void Program11b()
+        {
+            Console.Write("Write the quantity of numbers: ");
+
+            var quantity = Convert.ToInt32(Console.ReadLine());
+
+            var list = new List<int>();
+            for (var i = 0; i < quantity; i++)
+            {
+                Console.WriteLine($"Enter a number (no {i + 1})");
+                list.Add(Convert.ToInt32(Console.ReadLine()));
+            }
+
+            var sum = 0;
+
+            foreach (var element in list)
+                sum += element;
+
+            var average = 1.0 * sum / list.Count;
+
+            Console.WriteLine($"Sum is {sum} and average is {average}");
+        }
+
+        private static void Program11a()
+        {
+            Console.Write("Write the quantity of numbers: ");
+
+            var quantity = Convert.ToInt32(Console.ReadLine());
+            var array = new int[quantity];
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                Console.Write($"Write the number no {i + 1}: ");
+                array[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            var sum = 0;
+
+            foreach (var element in array)
+                sum += element;
+
+            var avg = sum / (double) quantity;
+            Console.WriteLine($"Sum: {sum}\nAvg: {avg}");
         }
 
         private static void Program10c()
