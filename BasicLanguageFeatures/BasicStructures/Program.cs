@@ -7,9 +7,38 @@ namespace BasicStructures
     {
         static void Main(string[] args)
         {
-            int[] array1 = { 1, 2, 3, 5, 6, 1 };
+            var stringToBeCleaned = "   Not     really   a good     sentence        ";
 
-            foreach (var element in ArrayUtils.Accumulate(array1)) 
+            Console.WriteLine(StringUtils.Clean(stringToBeCleaned));
+        }
+
+        private static void CountVowelsTest()
+        {
+            var name = "Marcin Jagieła";
+
+            Console.WriteLine(StringUtils.CountVowels(name));
+        }
+
+        private static void Triangularize()
+        {
+            int[,] array = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+
+            var result = ArrayUtils.Triangularize(array);
+
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+                for (int j = 0; j < result.GetLength(1); j++)
+                    Console.Write($"{result[i, j]}\t");
+
+                Console.WriteLine();
+            }
+        }
+
+        private static void AccumulateTest()
+        {
+            int[] array1 = {1, 2, 3, 5, 6, 1};
+
+            foreach (var element in ArrayUtils.Accumulate(array1))
                 Console.WriteLine(element);
         }
 

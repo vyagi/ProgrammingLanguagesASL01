@@ -4,6 +4,20 @@ namespace BasicStructures
 {
     public static class ArrayUtils
     {
+        public static int[,] Triangularize(int[,] inputArray)     
+        {
+            var result = new int[inputArray.GetLength(0), inputArray.GetLength(1)];
+
+            for (var i = 0; i < result.GetLength(0); i++)
+            {
+                for (var j = 0; j < result.GetLength(1); j++)
+                    if (i <= j)
+                        result[i, j] = inputArray[i, j];
+            }
+            
+            return result;
+        }
+
         public static int[] Accumulate(int[] inputArray)
         {
             var array = new int[inputArray.Length];
