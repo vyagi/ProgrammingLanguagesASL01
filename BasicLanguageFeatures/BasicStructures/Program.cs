@@ -7,7 +7,33 @@ namespace BasicStructures
     {
         static void Main(string[] args)
         {
-            int[] testArray = { 4, 7, 1, 2, 9, 2 };
+            int[] array1 = { 1, 2, 3, 5, 6, 1 };
+
+            foreach (var element in ArrayUtils.Accumulate(array1)) 
+                Console.WriteLine(element);
+        }
+
+        private static void ZipTest()
+        {
+            int[] array1 = {1, 2, 3, 5, 6, 1};
+            int[] array2 = {3, 2, 1};
+
+            foreach (var element in ArrayUtils.Zip(array1, array2))
+                Console.WriteLine(element);
+        }
+
+        private static void PickPositiveTest()
+        {
+            int[] testArray = {-1, -7, 1, 0, 9, 2}; // -> 1,9,2
+            var result = ArrayUtils.PickPositive(testArray);
+
+            foreach (var element in result)
+                Console.WriteLine(element);
+        }
+
+        private static void RoundTest()
+        {
+            int[] testArray = {4, 7, 1, 2, 9, 2};
             var result = ArrayUtils.Round(testArray, 4);
 
             foreach (var element in result)

@@ -4,6 +4,34 @@ namespace BasicStructures
 {
     public static class ArrayUtils
     {
+        public static int[] Accumulate(int[] inputArray)
+        {
+            var array = new int[inputArray.Length];
+            
+            array[0] = inputArray[0];
+            
+            for (var i = 1; i < inputArray.Length; i++) 
+                array[i] = array[i - 1] + inputArray[i];
+
+            return array;
+        }
+
+        public static int[] Zip(int[] arr1, int[] arr2)
+        {
+            var length = arr1.Length < arr2.Length
+                ? arr1.Length
+                : arr2.Length;
+
+            var newArray = new int[length];
+
+            for (var i = 0; i < length; i++) 
+                newArray[i] = arr1[i] + arr2[i];
+
+            return newArray;
+        }
+
+        public static int[] PickPositive(int[] inputArray) => Round(inputArray, 1);
+
         public static int[] Round(int[] inputArray, int threshold)
         {
             var result = new List<int>();
