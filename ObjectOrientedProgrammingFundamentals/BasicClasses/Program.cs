@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace BasicClasses
 {
@@ -8,48 +6,71 @@ namespace BasicClasses
     {
         static void Main(string[] args)
         {
-            var person1 = new Person { FirstName = "Marcin", LastName = "Jagieła" , Age = 19 };
-
-            //old fashioned way of initializing
-            var person2 = new Person();
-            person2.FirstName = "John";
-            person2.LastName = "Travolta";
-            person2.Age = 60;
-
-            var person3 = new Person("Donald", "Trump", 70);
+            var person1 = new Person("Marcin", "Jagieła", 19);
+            var person2 = new Person("Donald", "Trump", 70);
 
             Console.WriteLine(person1.FullName);
             Console.WriteLine(person2.FullName);
-            Console.WriteLine(person3.FullName);
 
             Console.WriteLine(person1.IsAdult);
 
-            var person4 = new  Person();
-            Console.WriteLine($"{person4.FirstName} {person4.LastName} {person4.Age}");
+            var person3 = new Person("Donald", "Tusk", 60);
+            Console.WriteLine(person3.LastName);
+            person3.LastName = "Wałęsa";
+            Console.WriteLine(person3.LastName);
         }
     }
     
     public class Person
     {
-        public Person() { }
         public Person(string firstName, string lastName, int age)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Age = age;
+            if (string.IsNullOrWhiteSpace(firstName))
+                throw new ArgumentException("First name should not be empty");
+
+            if (string.IsNullOrWhiteSpace(lastName))
+                throw new ArgumentException("Last name should not be empty");
+
+            if (age < 0)
+                throw new ArgumentException("Age should not be negative");
+
+            _firstName = firstName;
+            _lastName = lastName;
+            _age = age;
         }
 
-        //This is how you would to this in Java
-        // public string GetFullName()
+        public string FullName => $"{_firstName} {_lastName}";
+
+        public bool IsAdult => _age >= 18;
+
+        public string LastName
+        {
+            get => _lastName;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Last name should not be empty");
+
+                _lastName = value;
+            }
+        }
+
+        //Java world:
+        // public string GetLastName()
         // {
-        //     return $"{FirstName} {LastName}";
+        //     return _lastName;
         // }
-        public string FullName => $"{FirstName} {LastName}";
+        //
+        // public void SetLastName(string newLastName)
+        // {
+        //     if (string.IsNullOrWhiteSpace(newLastName))
+        //         throw new ArgumentException("Last name should not be empty");
+        //     
+        //     _lastName = newLastName;
+        // }
 
-        public bool IsAdult => Age >= 18;
-
-        public string LastName;
-        public string FirstName;
-        public int Age;
+        private string _lastName;
+        private string _firstName;
+        private int _age;
     }
 }
