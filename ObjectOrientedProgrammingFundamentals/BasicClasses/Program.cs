@@ -55,19 +55,29 @@ namespace BasicClasses
             }
         }
 
-        //Java world:
-        // public string GetLastName()
-        // {
-        //     return _lastName;
-        // }
-        //
-        // public void SetLastName(string newLastName)
-        // {
-        //     if (string.IsNullOrWhiteSpace(newLastName))
-        //         throw new ArgumentException("Last name should not be empty");
-        //     
-        //     _lastName = newLastName;
-        // }
+        public string FirstName
+        {
+            get => _firstName;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("First name should not be empty");
+
+                _firstName = value;
+            }
+        }
+
+        public int Age
+        {
+            get => _age;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("Age should not be negative");
+
+                _age = value;
+            }
+        }
 
         private string _lastName;
         private string _firstName;
