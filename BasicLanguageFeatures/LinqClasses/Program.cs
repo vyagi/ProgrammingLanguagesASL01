@@ -43,47 +43,41 @@ namespace LinqClasses
             Console.WriteLine($"{max}, {min}, {sum}, {avg}");
 
             var adults = ages.Where(x => x > 17);
-
-            foreach (var adult in adults) Console.WriteLine(adult);
-            Console.WriteLine("---------------------------------");
+            DisplayAndSeparate(adults);
 
             var oddAges = ages.Where(x => x % 2 != 0);
-            foreach (var age in oddAges) Console.WriteLine(age);
-            Console.WriteLine("---------------------------------");
+            DisplayAndSeparate(oddAges);
 
             var fromYoungest = ages.OrderBy(x => x);
-            foreach (var age in fromYoungest) Console.WriteLine(age);
-            Console.WriteLine("---------------------------------");
+            DisplayAndSeparate(fromYoungest);
 
             var byOnes = ages.OrderByDescending(x => x % 10);
-            foreach (var age in byOnes) Console.WriteLine(age);
-            Console.WriteLine("---------------------------------");
+            DisplayAndSeparate(byOnes);
 
             var namesAlphabetically = names.OrderBy(x => x);
-            foreach (var name in namesAlphabetically) Console.WriteLine(name);
-            Console.WriteLine("---------------------------------");
+            DisplayAndSeparate(namesAlphabetically);
 
             var namesByLength = names.OrderByDescending(x => x.Length);
-            foreach (var name in namesByLength) Console.WriteLine(name);
-            Console.WriteLine("---------------------------------");
+            DisplayAndSeparate(namesByLength);
 
             var strangelySortedNames = names
                 .Where(x => x.Length < 6)
                 .OrderBy(x => x.Last());
+            DisplayAndSeparate(strangelySortedNames);
 
-            foreach (var name in strangelySortedNames) Console.WriteLine(name);
-            Console.WriteLine("---------------------------------");
-
-            var namesOfOlderHeros = persons
+            var namesOfOlderHeroes = persons
                 .Where(x => x.Age > 30)
                 .OrderBy(x => x.FirstName)
                 .Select(x => x.FirstName + " " + x.LastName);
-
-            foreach (var name in namesOfOlderHeros) Console.WriteLine(name);
-            Console.WriteLine("---------------------------------");
+            DisplayAndSeparate(namesOfOlderHeroes);
 
             var sortedAlphabeticallyByFirstName = persons.OrderBy(x => x.FirstName);
-            foreach (var name in sortedAlphabeticallyByFirstName) Console.WriteLine(name);
+            DisplayAndSeparate(sortedAlphabeticallyByFirstName);
+        }
+
+        private static void DisplayAndSeparate<T>(IEnumerable<T> collection)
+        {
+            foreach (var element in collection) Console.WriteLine(element);
             Console.WriteLine("---------------------------------");
         }
     }
