@@ -73,6 +73,7 @@ namespace BasicClasses
 
              Console.WriteLine($"{car1.Make} produced in {car1.YearOfProduction} is {car1.Color}");
              Console.WriteLine($"It drove {car1.KilometerCounter} and currently has {car1.FuelLevel} liters of fuel");
+
              
         }
 
