@@ -14,6 +14,7 @@ namespace LinqClasses
 
             // EasyQueries(employees);
             //19. Who lives where
+
         }
 
         private static void EasyQueries(List<Employee> employees)
