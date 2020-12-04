@@ -11,7 +11,13 @@ namespace LinqClasses
         {
             var employees = Employee.GetEmployees().ToList();
             var personalData = PersonalData.GetPersonalData().ToList();
-            
+
+            // EasyQueries(employees);
+            //19. Who lives where
+        }
+
+        private static void EasyQueries(List<Employee> employees)
+        {
             //1. Select employees with seniority greater than 8 years
             var experiencedEmployees = employees
                 .Where(x => x.Seniority > 8);
@@ -53,7 +59,7 @@ namespace LinqClasses
 
             //5. Select employees with bonus greater than 10% of their salary
             var withGoodBonus = employees
-                .Where(x=>x.Bonus > 0.1M * x.BaseSalary);
+                .Where(x => x.Bonus > 0.1M * x.BaseSalary);
 
             foreach (var employee in withGoodBonus)
                 Console.WriteLine($"{employee.FirstName} {employee.LastName}");
