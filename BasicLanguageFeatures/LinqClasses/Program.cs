@@ -12,8 +12,55 @@ namespace LinqClasses
             var employees = Employee.GetEmployees().ToList();
             var personalData = PersonalData.GetPersonalData().ToList();
 
+            //Example:
+            var example =
+                from employee in employees
+                where employee.Age < 40
+                orderby employee.Seniority descending
+                select new 
+                { 
+                    FullName = $"{employee.FirstName} {employee.LastName}", 
+                    TotalSalary = employee.BaseSalary + employee.Bonus
+                };
+
+            foreach (var emp in example) 
+                Console.WriteLine($"{emp.FullName} earns {emp.TotalSalary}");
+
             // EasyQueries(employees);
             //19. Who lives where
+
+            var nameWithAddress =
+                from employee in employees
+                join data in personalData on employee.Id equals data.Id
+                select new
+                {
+                    FullName = $"{employee.FirstName} {employee.LastName}",
+                    Address = $"{data.City}, {data.Street} {data.House}"
+                };
+
+            foreach (var nwa in nameWithAddress) 
+                Console.WriteLine($"{nwa.FullName} lives in {nwa.Address}");
+
+            //21. From which city are the most employees
+            var employeeWithCity =
+                from employee in employees
+                join data in personalData on employee.Id equals data.Id
+                select new { Employee = employee, data.City };
+
+            var grouped = employeeWithCity
+                .GroupBy(x => x.City)
+                .OrderByDescending(x => x.Count())
+                .ToList();
+
+            var maximalNumberOfEmployees = grouped.First().Count();
+            var theCitiesWithMostEmployees = grouped
+                .Where(x => x.Count() == maximalNumberOfEmployees)
+                .Select(x=> x.Key);
+
+            foreach (var city in theCitiesWithMostEmployees)
+            {
+                Console.WriteLine(city);
+            }
 
         }
 
