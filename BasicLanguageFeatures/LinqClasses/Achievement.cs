@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LinqFeatures
+namespace LinqClasses
 {
     class Achievement
     {

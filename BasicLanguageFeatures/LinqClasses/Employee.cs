@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LinqFeatures
+namespace LinqClasses
 {
     class Employee
     {
