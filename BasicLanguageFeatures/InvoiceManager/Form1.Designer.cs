@@ -29,38 +29,56 @@ namespace InvoiceManager
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.readFileButton = new System.Windows.Forms.Button();
+            this.pathTextBox = new System.Windows.Forms.TextBox();
+            this.pathLabel = new System.Windows.Forms.Label();
+            this.resultTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // readFileButton
             // 
-            this.button1.Location = new System.Drawing.Point(46, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 34);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Click me !";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.readFileButton.Location = new System.Drawing.Point(12, 56);
+            this.readFileButton.Name = "readFileButton";
+            this.readFileButton.Size = new System.Drawing.Size(86, 25);
+            this.readFileButton.TabIndex = 0;
+            this.readFileButton.Text = "Read file";
+            this.readFileButton.UseVisualStyleBackColor = true;
+            this.readFileButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox1
+            // pathTextBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(190, 22);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(97, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Cool checkbox";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.pathTextBox.Location = new System.Drawing.Point(12, 30);
+            this.pathTextBox.Name = "pathTextBox";
+            this.pathTextBox.Size = new System.Drawing.Size(775, 20);
+            this.pathTextBox.TabIndex = 1;
+            this.pathTextBox.Text = "C:\\Users\\Marcin\\source\\repos\\ProgrammingLanguagesASL01\\invoices.txt";
+            // 
+            // pathLabel
+            // 
+            this.pathLabel.AutoSize = true;
+            this.pathLabel.Location = new System.Drawing.Point(12, 9);
+            this.pathLabel.Name = "pathLabel";
+            this.pathLabel.Size = new System.Drawing.Size(50, 13);
+            this.pathLabel.TabIndex = 2;
+            this.pathLabel.Text = "File path:";
+            // 
+            // resultTextBox
+            // 
+            this.resultTextBox.Location = new System.Drawing.Point(12, 88);
+            this.resultTextBox.Multiline = true;
+            this.resultTextBox.Name = "resultTextBox";
+            this.resultTextBox.Size = new System.Drawing.Size(775, 350);
+            this.resultTextBox.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.resultTextBox);
+            this.Controls.Add(this.pathLabel);
+            this.Controls.Add(this.pathTextBox);
+            this.Controls.Add(this.readFileButton);
             this.Name = "Form1";
             this.Text = "Invoice manager";
             this.ResumeLayout(false);
@@ -70,8 +88,10 @@ namespace InvoiceManager
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button readFileButton;
+        private System.Windows.Forms.TextBox pathTextBox;
+        private System.Windows.Forms.Label pathLabel;
+        private System.Windows.Forms.TextBox resultTextBox;
     }
 }
 

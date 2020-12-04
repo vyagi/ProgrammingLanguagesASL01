@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace InvoiceManager
@@ -19,7 +13,15 @@ namespace InvoiceManager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            checkBox1.Checked = !checkBox1.Checked;
+            var path = pathTextBox.Text;
+
+            if (!File.Exists(path))
+            {
+                MessageBox.Show("File does not exist. Cannot proceed");
+                return;
+            }
+
+            resultTextBox.Text = File.ReadAllText(path);
         }
     }
 }
