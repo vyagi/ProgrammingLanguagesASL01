@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30406.169
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicStructures", "BasicStructures\BasicStructures.csproj", "{B58FB2FE-070D-42D9-9AC2-BDFB219778E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqClasses", "LinqClasses\LinqClasses.csproj", "{CB055903-708D-48F9-91B0-6DEEB5FC41B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqClasses", "LinqClasses\LinqClasses.csproj", "{CB055903-708D-48F9-91B0-6DEEB5FC41B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager", "InvoiceManager\InvoiceManager.csproj", "{C41C7809-C3B6-4A97-B0AA-CEF9D2866E9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CB055903-708D-48F9-91B0-6DEEB5FC41B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB055903-708D-48F9-91B0-6DEEB5FC41B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB055903-708D-48F9-91B0-6DEEB5FC41B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41C7809-C3B6-4A97-B0AA-CEF9D2866E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41C7809-C3B6-4A97-B0AA-CEF9D2866E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41C7809-C3B6-4A97-B0AA-CEF9D2866E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41C7809-C3B6-4A97-B0AA-CEF9D2866E9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
