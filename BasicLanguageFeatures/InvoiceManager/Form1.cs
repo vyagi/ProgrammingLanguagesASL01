@@ -16,5 +16,10 @@ namespace InvoiceManager
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            checkBox1.Checked = !checkBox1.Checked;
+        }
     }
 }
