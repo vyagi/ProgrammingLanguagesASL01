@@ -29,52 +29,32 @@ namespace InvoiceManager
 
         private void groupByNamesButton_Click(object sender, EventArgs e)
         {
-            if (!EnsureFileExists(pathTextBox.Text)) return;
+            var path = pathTextBox.Text;
 
-            var invoices = Invoices(pathTextBox.Text);
+            if (!File.Exists(path))
+            {
+                MessageBox.Show("File does not exist. Cannot proceed");
+                return;
+            }
+
+            var invoices = new List<Invoice>();
+
+            foreach (var line in File.ReadAllLines(path).Skip(1))
+            {
+                var split = line.Split('\t');
+
+                var name = split[0];
+                var date = Convert.ToDateTime(split[1]);
+                var amount = Convert.ToDecimal(split[2].Replace(",", CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator));
+
+                invoices.Add(new Invoice(name, date, amount));
+            }
 
             var grouped = invoices.GroupBy(x => x.Name)
                 .Select(x => $"{x.Key}: {x.Sum(y => y.Amount)}")
                 .OrderBy(x => x);
 
             resultTextBox.Text = string.Join("\r\n", grouped);
-        }
-
-        private static IEnumerable<Invoice> Invoices(string path) =>
-            File.ReadAllLines(path).Skip(1).Select(ToInvoice).ToList();
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (!EnsureFileExists(pathTextBox.Text)) return;
-
-            var lines = Invoices(pathTextBox.Text)
-                .GroupBy(x => new {x.Date.Year, Month = x.Date.ToString("MMMM"), MonthNumber = x.Date.Month})
-                .OrderBy(x => x.Key.Year)
-                .ThenBy(x => x.Key.MonthNumber)
-                .Select(x => $"{x.Key.Year}, {x.Key.Month}: {x.Sum(y => y.Amount)}");
-
-            resultTextBox.Text = string.Join("\r\n", lines);
-        }
-
-        private bool EnsureFileExists(string path)
-        {
-            return File.Exists(path) ? ExistsAction() : DoesNotExistAction();
-            
-            bool DoesNotExistAction()
-            {
-                MessageBox.Show("File does not exist. Cannot proceed");
-                return true;
-            }
-
-            bool ExistsAction() => true;
-        }
-
-        private static Invoice ToInvoice(string line)
-        {
-            var split = line.Split('\t');
-
-            return new Invoice(split[0], Convert.ToDateTime(split[1]), Convert.ToDecimal(split[2].Replace(",",
-                CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator)));
         }
     }
 
