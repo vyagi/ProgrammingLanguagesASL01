@@ -34,6 +34,7 @@ namespace InvoiceManager
             this.pathLabel = new System.Windows.Forms.Label();
             this.resultTextBox = new System.Windows.Forms.TextBox();
             this.groupByNamesButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // readFileButton
@@ -81,11 +82,22 @@ namespace InvoiceManager
             this.groupByNamesButton.UseVisualStyleBackColor = true;
             this.groupByNamesButton.Click += new System.EventHandler(this.groupByNamesButton_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(206, 56);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 26);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Group by names";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupByNamesButton);
             this.Controls.Add(this.resultTextBox);
             this.Controls.Add(this.pathLabel);
@@ -105,6 +117,7 @@ namespace InvoiceManager
         private System.Windows.Forms.Label pathLabel;
         private System.Windows.Forms.TextBox resultTextBox;
         private System.Windows.Forms.Button groupByNamesButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 
