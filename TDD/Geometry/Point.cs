@@ -24,5 +24,7 @@ namespace Geometry
             Math.Sqrt(Math.Pow(_x - anotherPoint._x, 2) + Math.Pow(_y - anotherPoint._y, 2));
 
         public static double Distance(Point point, Point anotherPoint) => point.Distance(anotherPoint);
+
+        public override string ToString() => $"({_x}, {_y})";
     }
 }

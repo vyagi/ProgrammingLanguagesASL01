@@ -64,5 +64,15 @@ namespace Geometry.Tests
 
             distance.Should().Be(5);
         }
+
+        [Fact]
+        public void ToString_returns_valid_representation_of_the_point()
+        {
+            var point = new Point(2, -5);
+
+            var representation = point.ToString();
+
+            representation.Should().Be("(2, -5)");
+        }
     }
 }
