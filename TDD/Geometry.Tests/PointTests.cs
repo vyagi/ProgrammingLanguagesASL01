@@ -53,5 +53,16 @@ namespace Geometry.Tests
 
             distance.Should().Be(5);
         }
+
+        [Fact]
+        public void Static_distance_returns_valid_distance_between_two_points()
+        {
+            var point = new Point(2, -5);
+            var anotherPoint = new Point(5, -1);
+
+            var distance = Point.Distance(point, anotherPoint);
+
+            distance.Should().Be(5);
+        }
     }
 }
