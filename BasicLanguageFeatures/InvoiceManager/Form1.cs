@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using InvoiceManager.Services;
@@ -15,15 +16,25 @@ namespace InvoiceManager
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) =>
+            HandleClick(() => resultTextBox.Text = 
+                Join(_factory
+                    .Create(pathTextBox.Text)
+                    .GetInvoices()
+                    .Select(x => $"{x.Name}\t{x.Date:yyyy-MM-dd}\t{x.Amount}")));
+
+        private void groupByNamesButton_Click(object sender, EventArgs e) =>
+            HandleClick(() => resultTextBox.Text = 
+                Join(_factory
+                    .Create(pathTextBox.Text)
+                    .GetInvoicesGroupedByName()
+                    .Select(x => $"{x.Name}: {x.TotalAmount}")));
+
+        private static void HandleClick(Action action)
         {
             try
             {
-                var invoiceProcessor = _factory.Create(pathTextBox.Text);
-
-                var invoices = invoiceProcessor.GetInvoices();
-
-                resultTextBox.Text = string.Join("\r\n", invoices.Select(x => $"{x.Name}\t{x.Date:yyyy-MM-dd}\t{x.Amount}"));
+                action();
             }
             catch (Exception exception)
             {
@@ -31,20 +42,7 @@ namespace InvoiceManager
             }
         }
 
-        private void groupByNamesButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var invoiceProcessor = _factory.Create(pathTextBox.Text);
-
-                var invoices = invoiceProcessor.GetInvoicesGroupedByName();
-
-                resultTextBox.Text = string.Join("\r\n", invoices.Select(x => $"{x.Name}: {x.TotalAmount}"));
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show($"{exception.Message}", "Error occured");
-            }
-        }
+        private string Join(IEnumerable<string> strings) => 
+            string.Join("\r\n", strings);
     }
 }

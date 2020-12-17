@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager", "InvoiceMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager.Services", "InvoiceManager.Services\InvoiceManager.Services.csproj", "{F3FDFA40-1162-4BE2-B0D6-3EB24EA108BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager.Services.Tests", "InvoiceManager.Services.Tests\InvoiceManager.Services.Tests.csproj", "{D2E39EFE-62A3-4858-AE1A-F202793A64C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F3FDFA40-1162-4BE2-B0D6-3EB24EA108BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3FDFA40-1162-4BE2-B0D6-3EB24EA108BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3FDFA40-1162-4BE2-B0D6-3EB24EA108BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E39EFE-62A3-4858-AE1A-F202793A64C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E39EFE-62A3-4858-AE1A-F202793A64C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E39EFE-62A3-4858-AE1A-F202793A64C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E39EFE-62A3-4858-AE1A-F202793A64C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
