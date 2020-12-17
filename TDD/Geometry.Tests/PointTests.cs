@@ -96,5 +96,16 @@ namespace Geometry.Tests
             reflection.X.Should().Be(-point.X);
             reflection.Y.Should().Be(point.Y);
         }
+
+        [Fact]
+        public void Reflect_by_origin_returns_proper_point()
+        {
+            var point = new Point(2, -5);
+
+            var reflection = point.Reflect(Point.ReflectionType.Origin);
+
+            reflection.X.Should().Be(-point.X);
+            reflection.Y.Should().Be(-point.Y);
+        }
     }
 }

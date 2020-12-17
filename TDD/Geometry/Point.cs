@@ -30,20 +30,17 @@ namespace Geometry
         public enum ReflectionType
         {
             X,
-            Y
+            Y,
+            Origin
         }
 
-        public Point Reflect(ReflectionType reflectionType)
-        {
-            switch (reflectionType)
+        public Point Reflect(ReflectionType reflectionType) =>
+            reflectionType switch
             {
-                case ReflectionType.X:
-                    return new Point(_x, -_y); 
-                case ReflectionType.Y:
-                    return new Point(-_x, _y);
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(reflectionType), reflectionType, null);
-            }
-        }
+                ReflectionType.X => new Point(_x, -_y),
+                ReflectionType.Y => new Point(-_x, _y),
+                ReflectionType.Origin => new Point(-_x, -_y),
+                _ => throw new ArgumentOutOfRangeException(nameof(reflectionType), reflectionType, null)
+            };
     }
 }
