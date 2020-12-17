@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InvoiceManager.Services\InvoiceManager.Services.csproj">
+      <Project>{f3fdfa40-1162-4be2-b0d6-3eb24ea108bb}</Project>
+      <Name>InvoiceManager.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
