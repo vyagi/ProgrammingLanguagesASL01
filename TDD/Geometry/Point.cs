@@ -13,6 +13,8 @@ namespace Geometry
             _y = y;
         }
 
+        public Point() : this(1,1) { }
+
         public double X => _x;
         public double Y => _y;
     }

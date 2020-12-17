@@ -23,5 +23,14 @@ namespace Geometry.Tests
             point.X.Should().Be(1.5);
             point.Y.Should().Be(2.6);
         }
+
+        [Fact]
+        public void Can_create_a_point_with_no_parameters_and_it_will_be_1_1()
+        {
+            var point = new Point();
+
+            point.X.Should().Be(1);
+            point.Y.Should().Be(1);
+        }
     }
 }
