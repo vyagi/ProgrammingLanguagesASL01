@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -35,18 +37,24 @@ namespace InvoiceManager
                 return;
             }
 
-            var lines = File.ReadAllLines(path).Skip(1);
+            var invoices = new List<Invoice>();
 
-            foreach (var line in lines)
+            foreach (var line in File.ReadAllLines(path).Skip(1))
             {
                 var split = line.Split('\t');
+
                 var name = split[0];
-                var date = split[1];
-                var amount = split[2];
+                var date = Convert.ToDateTime(split[1]);
+                var amount = Convert.ToDecimal(split[2].Replace(",", CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator));
 
-
+                invoices.Add(new Invoice(name, date, amount));
             }
 
+            var grouped = invoices.GroupBy(x => x.Name)
+                .Select(x => $"{x.Key}: {x.Sum(y => y.Amount)}")
+                .OrderBy(x => x);
+
+            resultTextBox.Text = string.Join("\r\n", grouped);
         }
     }
 
