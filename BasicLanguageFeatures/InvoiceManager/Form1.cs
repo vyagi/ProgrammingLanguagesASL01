@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using InvoiceManager.Services;
@@ -10,52 +7,44 @@ namespace InvoiceManager
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private readonly FileInvoiceProcessorFactory _factory;
+
+        public Form1(FileInvoiceProcessorFactory factory)
         {
             InitializeComponent();
+            _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var path = pathTextBox.Text;
-
-            if (!File.Exists(path))
+            try
             {
-                MessageBox.Show("File does not exist. Cannot proceed");
-                return;
-            }
+                var invoiceProcessor = _factory.Create(pathTextBox.Text);
 
-            resultTextBox.Text = File.ReadAllText(path);
+                var invoices = invoiceProcessor.GetInvoices();
+
+                resultTextBox.Text = string.Join("\r\n", invoices.Select(x => $"{x.Name}\t{x.Date:yyyy-MM-dd}\t{x.Amount}"));
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"{exception.Message}", "Error occured");
+            }
         }
 
         private void groupByNamesButton_Click(object sender, EventArgs e)
         {
-            var path = pathTextBox.Text;
-
-            if (!File.Exists(path))
+            try
             {
-                MessageBox.Show("File does not exist. Cannot proceed");
-                return;
+                var invoiceProcessor = _factory.Create(pathTextBox.Text);
+
+                var invoices = invoiceProcessor.GetInvoicesGroupedByName();
+
+                resultTextBox.Text = string.Join("\r\n", invoices.Select(x => $"{x.Name}: {x.TotalAmount}"));
             }
-
-            var invoices = new List<Invoice>();
-
-            foreach (var line in File.ReadAllLines(path).Skip(1))
+            catch (Exception exception)
             {
-                var split = line.Split('\t');
-
-                var name = split[0];
-                var date = Convert.ToDateTime(split[1]);
-                var amount = Convert.ToDecimal(split[2].Replace(",", CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator));
-
-                invoices.Add(new Invoice(name, date, amount));
+                MessageBox.Show($"{exception.Message}", "Error occured");
             }
-
-            var grouped = invoices.GroupBy(x => x.Name)
-                .Select(x => $"{x.Key}: {x.Sum(y => y.Amount)}")
-                .OrderBy(x => x);
-
-            resultTextBox.Text = string.Join("\r\n", grouped);
         }
     }
 }

@@ -41,7 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileInvoiceLineProvider.cs" />
+    <Compile Include="FileInvoiceProcessorFactory.cs" />
+    <Compile Include="FileProviderException.cs" />
+    <Compile Include="ILineProvider.cs" />
     <Compile Include="Invoice.cs" />
+    <Compile Include="InvoiceProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
