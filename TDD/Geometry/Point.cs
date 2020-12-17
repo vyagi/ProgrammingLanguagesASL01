@@ -12,5 +12,8 @@ namespace Geometry
             _x = x;
             _y = y;
         }
+
+        public double X => _x;
+        public double Y => _y;
     }
 }
