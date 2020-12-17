@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using InvoiceManager.Services;
 
 namespace InvoiceManager
 {
@@ -55,20 +56,6 @@ namespace InvoiceManager
                 .OrderBy(x => x);
 
             resultTextBox.Text = string.Join("\r\n", grouped);
-        }
-    }
-
-    public class Invoice
-    {
-        public string Name { get; set; }
-        public DateTime Date { get; set; }
-        public decimal Amount { get; set; }
-
-        public Invoice(string name, DateTime date, decimal amount)
-        {
-            Name = name;
-            Date = date;
-            Amount = amount;
         }
     }
 }
