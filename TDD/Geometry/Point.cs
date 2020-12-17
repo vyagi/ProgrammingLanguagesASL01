@@ -26,5 +26,24 @@ namespace Geometry
         public static double Distance(Point point, Point anotherPoint) => point.Distance(anotherPoint);
 
         public override string ToString() => $"({_x}, {_y})";
+
+        public enum ReflectionType
+        {
+            X,
+            Y
+        }
+
+        public Point Reflect(ReflectionType reflectionType)
+        {
+            switch (reflectionType)
+            {
+                case ReflectionType.X:
+                    return new Point(_x, -_y); 
+                case ReflectionType.Y:
+                    return new Point(-_x, _y);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(reflectionType), reflectionType, null);
+            }
+        }
     }
 }

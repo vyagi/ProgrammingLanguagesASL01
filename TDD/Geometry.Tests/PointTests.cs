@@ -9,7 +9,7 @@ namespace Geometry.Tests
         [Fact]
         public void Can_create_a_point_with_two_coordinates()
         {
-            var point = new Point(1,2);
+            var point = new Point(1, 2);
 
             point.X.Should().Be(1);
             point.Y.Should().Be(2);
@@ -36,7 +36,7 @@ namespace Geometry.Tests
         [Fact]
         public void Distance_returns_proper_value()
         {
-            var point = new Point(3,4);
+            var point = new Point(3, 4);
 
             var distance = point.Distance();
 
@@ -46,8 +46,8 @@ namespace Geometry.Tests
         [Fact]
         public void Distance_from_another_point_returns_proper_value()
         {
-            var point = new Point(2,-5);
-            var anotherPoint = new Point(5,-1);
+            var point = new Point(2, -5);
+            var anotherPoint = new Point(5, -1);
 
             var distance = point.Distance(anotherPoint);
 
@@ -73,6 +73,28 @@ namespace Geometry.Tests
             var representation = point.ToString();
 
             representation.Should().Be("(2, -5)");
+        }
+
+        [Fact]
+        public void Reflect_by_x_returns_proper_point()
+        {
+            var point = new Point(2, -5);
+
+            var reflection = point.Reflect(Point.ReflectionType.X);
+
+            reflection.X.Should().Be(point.X);
+            reflection.Y.Should().Be(-point.Y);
+        }
+
+        [Fact]
+        public void Reflect_by_y_returns_proper_point()
+        {
+            var point = new Point(2, -5);
+
+            var reflection = point.Reflect(Point.ReflectionType.Y);
+
+            reflection.X.Should().Be(-point.X);
+            reflection.Y.Should().Be(point.Y);
         }
     }
 }
