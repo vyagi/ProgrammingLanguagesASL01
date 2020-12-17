@@ -32,5 +32,26 @@ namespace Geometry.Tests
             point.X.Should().Be(1);
             point.Y.Should().Be(1);
         }
+
+        [Fact]
+        public void Distance_returns_proper_value()
+        {
+            var point = new Point(3,4);
+
+            var distance = point.Distance();
+
+            distance.Should().Be(5);
+        }
+
+        [Fact]
+        public void Distance_from_another_point_returns_proper_value()
+        {
+            var point = new Point(2,-5);
+            var anotherPoint = new Point(5,-1);
+
+            var distance = point.Distance(anotherPoint);
+
+            distance.Should().Be(5);
+        }
     }
 }

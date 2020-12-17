@@ -17,5 +17,10 @@ namespace Geometry
 
         public double X => _x;
         public double Y => _y;
+
+        public double Distance() => Math.Sqrt(_x*_x + _y*_y);
+
+        public double Distance(Point anotherPoint) => 
+            Math.Sqrt(Math.Pow(_x - anotherPoint._x, 2) + Math.Pow(_y - anotherPoint._y, 2));
     }
 }
